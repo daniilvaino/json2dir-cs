@@ -14,7 +14,9 @@ System.Text.Json.Nodes.JsonObject o?System.Linq.Enumerable.Prepend(
 System.Linq.Enumerable.SelectMany(o,k=>((System.Func<object,string,
 System.Text.Json.Nodes.JsonNode,System.Collections.Generic.IEnumerable<(
 string p,System.Text.Json.Nodes.JsonNode n)>>)f)(f,System.IO.Path.Combine(p,
-k.Key),k.Value!)),(p,n)):[(p,n)])is var g?g(g,
+k.Key is""or"."or".."||k.Key.IndexOfAny(System.IO.Path.GetInvalidFileNameChars(
+))>=0?throw new System.ArgumentException(k.Key):k.Key),k.Value!)),(p,n)):[(p,n)
+])is var g?g(g,
 System.Linq.Enumerable.FirstOrDefault(args)??".",
 System.Text.Json.Nodes.JsonNode.Parse(System.Console.In.ReadToEnd())!
 ):[],e=>e.n switch{System.Text.Json.Nodes.JsonObject=>()=>
